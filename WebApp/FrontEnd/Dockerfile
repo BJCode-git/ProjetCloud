@@ -2,7 +2,7 @@
 FROM node:latest
 
 # Set the working directory to /usr/src/frontend
-WORKDIR /usr/src/frontend
+WORKDIR /frontend
 
 # Copy the current directory contents into the container at /usr/src/frontend
 COPY . .
