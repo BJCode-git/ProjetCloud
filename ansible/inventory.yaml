@@ -10,6 +10,6 @@ all:
     gravalanche:
       vxlan_interface_address: 172.16.12.101
       priority: 245
-    hautepierre:
+    grolem:
       vxlan_interface_address: 172.16.12.102
       priority: 246
