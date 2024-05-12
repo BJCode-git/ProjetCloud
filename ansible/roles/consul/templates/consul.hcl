@@ -116,17 +116,15 @@ encrypt = "{{ consul_encrypt }}"
 #retry_join = ["provider=azure tag_name=... tag_value=... tenant_id=... client_id=... subscription_id=... secret_access_key=..."]
 #retry_join = ["provider=gce project_name=... tag_value=..."]
 {% if consul_retry_join is defined %}
-retry_join = [{% for item in consul_retry_join %}"{{ item }}"{% if not loop.last %},{% endif %}{% endfor %}]
+#retry_join = [{% for item in consul_retry_join %}"{{ item }}"{% if not loop.last %},{% endif %}{% endfor %}]
 {% endif %}
-
 
 addresses {
   # Bind the DNS service to the VXLAN interface
   # We can't bind on 0.0.0.0, because systemd-resolved already listens on 127.0.0.53
-  dns = ""{{ hostvars[inventory_hostname]['vxlan_interface_address'] }}"
+  echo = "{{ hostvars[inventory_hostname]['vxlan_interface_address'] }}"
+  dns = "{{ hostvars[inventory_hostname]['vxlan_interface_address'] }}"#172.16.12.101
 }
-
-
 
 ports {
   # Make the DNS service listen on port 53, instead of the default 8600

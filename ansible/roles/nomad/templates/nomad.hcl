@@ -14,13 +14,13 @@ advertise {
   serf = "{{ hostvars[inventory_hostname]['vxlan_interface_address'] }}"
 }
 
-# This node is a server, and expects to be the only server in the cluster
+# This node is a server
 server {
   enabled = true
   bootstrap_expect = {{ nomad_server_number }}
 }
 
-# This node is not running jobs
+# This node can run jobs
 client {
   enabled = true
   network_interface = "{{ interface_vxlan }}"
