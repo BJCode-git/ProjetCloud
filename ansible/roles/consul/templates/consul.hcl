@@ -122,7 +122,6 @@ encrypt = "{{ consul_encrypt }}"
 addresses {
   # Bind the DNS service to the VXLAN interface
   # We can't bind on 0.0.0.0, because systemd-resolved already listens on 127.0.0.53
-  echo = "{{ hostvars[inventory_hostname]['vxlan_interface_address'] }}"
   dns = "{{ hostvars[inventory_hostname]['vxlan_interface_address'] }}"#172.16.12.101
 }
 
