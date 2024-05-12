@@ -24,8 +24,6 @@ COPY . /app
 # Exposer le port 8080 utilisé par l'application Flask
 EXPOSE 8080
 
-# Commande par défaut pour exécuter le serveur web avec Gunicorn
-CMD ["gunicorn", "--workers", "4", "--bind", "0.0.0.0:8080", "image_api.web:app"]
 # Run the celery worker
 CMD [ "poetry", "run", "celery", "--app", "worker.app", "worker" ]
 

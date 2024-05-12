@@ -13,10 +13,16 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 WORKDIR /app
 
 # Copier le fichier pyproject.toml pour installer les dépendances
-COPY pyproject.toml poetry.lock /app/
+COPY  . .
 
 # Installer les dépendances du projet
-RUN poetry install --no-dev
+RUN poetry install
+
+# Install gunicorn
+pip install gunicorn
+
+# Run gunicorn with 4 threads on port 8080
+gunicorn --workers 4 --bind 0.0.0.0:8080 image_api.web:app
 
 # Copier le reste des fichiers de l'application
 COPY . /app
