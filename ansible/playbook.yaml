@@ -1,4 +1,9 @@
- hosts: all
+---
+- hosts: all
+  handlers:
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: true
   roles:
     - role: docker
       tags: docker
