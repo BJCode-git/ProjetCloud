@@ -1,0 +1,33 @@
+---
+- name: install docker
+  ansible.builtin.package:
+    name: "{{ docker_packages }}"
+    state: present
+  when: 
+    - install_docker
+
+- name: install docker pip packages
+  ansible.builtin.pip:
+    name: "{{ docker_pip_packages }}"
+    state: present
+  when:
+    - install_docker 
+
+- name: "Add current user to Docker group"
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    groups: "docker"
+    append: "yes"
+
+- name: "Ensure Docker config directory is present"
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    mode: "0755"
+
+
+- name: "Enable and start Docker"
+  ansible.builtin.systemd:
+    name: docker.service
+    enabled: true
+    state: started

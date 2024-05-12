@@ -1,0 +1,15 @@
+all:
+  vars:
+    ansible_user: ubuntu
+    ansible_become: yes
+
+  hosts:
+    racaillou:
+      vxlan_interface_address: 172.16.12.100
+      priority: 244
+    gravalanche:
+      vxlan_interface_address: 172.16.12.101
+      priority: 245
+    hautepierre:
+      vxlan_interface_address: 172.16.12.102
+      priority: 246

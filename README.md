@@ -1,6 +1,9 @@
 # ProjetCloud
 
-
+# External links
+https://github.com/robertdebock/ansible-role-consul
+https://github.com/robertdebock/ansible-role-nomad
+https://deep75.medium.com/d%C3%A9ployer-un-cluster-nomad-et-consul-tr%C3%A8s-rapidement-avec-hashi-up-76c75f27f84c
 
 ## Getting started
 
