@@ -7,7 +7,7 @@ all:
     racaillou:
       vxlan_interface_address: 172.16.12.100
       priority: 244
-    gravalanche:
+    gravalanch:
       vxlan_interface_address: 172.16.12.101
       priority: 245
     grolem:
