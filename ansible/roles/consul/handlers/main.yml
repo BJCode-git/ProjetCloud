@@ -1,7 +1,5 @@
 ---
-# handlers file for consul
-
-- name: Restart consul
-  ansible.builtin.service:
-    name: consul
+- name: Restart Consul
+  ansible.builtin.systemd:
+    name: consul.service
     state: restarted
