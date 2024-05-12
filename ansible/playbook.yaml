@@ -1,8 +1,5 @@
 ---
 - hosts: all
-  become: yes
-  become_user: root
-  become_method: su
   handlers:
     - name: Reload systemd
       ansible.builtin.systemd:

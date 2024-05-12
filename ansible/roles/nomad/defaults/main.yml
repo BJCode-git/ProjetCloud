@@ -1,0 +1,63 @@
+# assert supported os/versions
+os_supported_matrix:
+  AlmaLinux:
+    min_version: ""
+  Archlinux:
+    min_version: ""
+  Flatcar:
+    min_version: ""
+  # RHEL-based
+  RedHat:
+    min_version: "7"
+  CentOS:
+    min_version: "7"
+  Fedora:
+    min_version: ""
+  Amazon:
+    min_version: ""
+  # Debian based
+  OracleLinux:
+    min_version: "8"
+  Debian:
+    min_version: "10"
+  Ubuntu:
+    min_version: "20.04"
+  VMware Photon OS:
+    min_version: "4"
+
+## Core
+nomad_debug: false
+
+## Asserts
+nomad_skip_ensure_all_hosts: "{{ lookup('env', 'NOMAD_SKIP_ENSURE_ALL_HOSTS') | default('false', true) }}"
+
+## Config Purge
+nomad_allow_purge_config: "{{ lookup('env', 'NOMAD_ALLOW_PURGE_CONFIG') | default('false', true) }}"
+
+### Package
+nomad_version: "{{ lookup('env', 'NOMAD_VERSION') | default('1.1.1', true) }}"
+nomad_architecture_map:
+  amd64: amd64
+  x86_64: amd64
+  armv7l: arm
+  aarch64: arm64
+  32-bit: "386"
+  64-bit: amd64
+nomad_architecture: "{{ nomad_architecture_map[ansible_architecture] }}"
+nomad_pkg: nomad_{{ nomad_version }}_linux_{{ nomad_architecture }}.zip
+nomad_zip_url: https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_{{ nomad_architecture }}.zip
+nomad_checksum_file_url: https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_SHA256SUMS
+nomad_podman_enable: false
+nomad_podman_version: "{{ lookup('env', 'NOMAD_PODMAN_VERSION') | default('0.3.0', true) }}"
+nomad_podman_pkg: nomad-driver-podman_{{ nomad_podman_version }}_linux_{{ nomad_architecture }}.zip
+nomad_podman_url: https://releases.hashicorp.com/nomad-driver-podman/{{ nomad_podman_version }}
+nomad_podman_zip_url: "{{ nomad_podman_url }}/{{ nomad_podman_pkg }}"
+nomad_podman_checksum_file_url: "{{ nomad_podman_url }}/nomad-driver-podman_{{ nomad_podman_version }}_SHA256SUMS"
+
+### Paths
+nomad_bin_dir: /usr/local/bin
+nomad_config_dir: /etc/nomad.d
+nomad_data_dir: /var/nomad
+nomad_plugin_dir: "{{ nomad_data_dir }}/plugins"
+nomad_lockfile: /var/lock/subsys/nomad
+nomad_bin_dir: /var/run/nomad

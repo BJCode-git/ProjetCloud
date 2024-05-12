@@ -1,6 +1,6 @@
 ---
 # vars file for roles/docker
-install_docker: true
+install_docker: false
 
 _docker_packages:
   default:
