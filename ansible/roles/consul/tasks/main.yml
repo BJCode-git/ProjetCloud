@@ -1,6 +1,4 @@
 ---
-# tasks file for roles/consul
----
 # tasks file for consul
 
 - name: Import assert.yml
