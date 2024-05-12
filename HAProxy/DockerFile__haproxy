@@ -1,0 +1,16 @@
+# Dockerfile pour HAProxy
+
+# Utilise l'image officielle de HAProxy
+FROM haproxy:latest
+
+# Copie le fichier de configuration HAProxy
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
+
+# Expose le port du serveur web
+EXPOSE 8080
+
+# Expose le port pour les statistiques HAProxy
+EXPOSE 8404
+
+# Commande par défaut pour démarrer HAProxy
+CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
