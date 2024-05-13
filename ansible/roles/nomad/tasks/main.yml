@@ -27,12 +27,12 @@
     name: nomad.service
     state: restarted
 
-- name: Determine nomad leader
-  ansible.builtin.set_fact:
-    nomad_leader: "{{ ansible_hostname }}"
-  run_once: true
-  when:
-    - nomad_server
+#- name: Determine nomad leader
+#  ansible.builtin.set_fact:
+#    nomad_leader: "{{ ansible_hostname }}"
+#  run_once: true
+#  when:
+#    - nomad_server
 #
 #- name: List server members
 #  ansible.builtin.command:
@@ -42,17 +42,17 @@
 #  when:
 #    - nomad_server
 
-- name: Join nomad leader
-  ansible.builtin.command:
-    cmd: nomad server join {{ nomad_leader }}:4648
-  register: nomad_join_nomad_leader
-  when:
-    - ansible_hostname != nomad_server
-    - ansible_hostname not in nomad_list_server_members.stdout
-  changed_when: true
+#- name: Join nomad leader
+#  ansible.builtin.command:
+#    cmd: nomad server join {{ nomad_leader }}:4648
+#  register: nomad_join_nomad_leader
+#  when:
+#    - ansible_hostname != nomad_server
+#    - ansible_hostname not in nomad_list_server_members.stdout
+#  changed_when: true
 
-- name: "Submit Nomad job"
-  command: nomad run /etc/nomad.d/jobs/job.hcl
-  delegate_to: "{{ job_instance_loader }}"
-  become: true
-  timeout: 300
+#- name: "Submit Nomad job"
+#  command: nomad run /etc/nomad.d/jobs/job.hcl
+#  delegate_to: "{{ job_instance_loader }}"
+#  become: true
+#  timeout: 300
