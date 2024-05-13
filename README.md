@@ -17,8 +17,8 @@ docker build ./ --tag projetcloud/front-end
 docker tag projetcloud/front-end docker.io/jbunistras/cloud-front-end
 docker push docker.io/jbunistras/cloud-front-end
 
-# Normalement, les images sont maintenant à jour sur le dockerhub 
-# via un job gitlab qui se déclenche à chaque push sur la branche front-end ou back-end
+Normalement, les images sont maintenues à jour sur le dockerhub 
+via un job gitlab qui se déclenche à chaque push sur la branche front-end ou back-end
 
 # Configuration de l'accès aux machines et configuration de l'ip flottante
 
