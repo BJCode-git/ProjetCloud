@@ -1,7 +1,8 @@
 docker-build:
-  # Use the official docker image.
-  image: docker:cli
+  image: docker:19.03
   stage: build
+  services:
+    - docker:19.03-dind
 
   before_script:
     - echo "dckr_pat_6ozrng5x5m16k68os4kQkO17NqI" > docker login -u "jbunistra" --password-stdin 
