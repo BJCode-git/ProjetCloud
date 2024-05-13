@@ -7,7 +7,7 @@
     DOCKER_DRIVER: overlay2
 
   before_script:
-    - echo "dckr_pat_6ozrng5x5m16k68os4kQkO17NqI" | docker login -u "jbunistra" --password-stdin
+    - echo "dckr_pat_6ozrng5x5m16k68os4kQkO17NqI" > docker login -u "jbunistra" --password-stdin
 
   build:
     stage: build
