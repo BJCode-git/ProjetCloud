@@ -1,0 +1,31 @@
+- name: "Stop Nomad"
+  ansible.builtin.systemd:
+    name: nomad.service
+    state: stopped
+  ignore_errors: true
+
+- name: "Stop Consul"
+  ansible.builtin.systemd:
+    name: consul.service
+    state: stopped
+  ignore_errors: true
+
+- name: "Stop Docker"
+  ansible.builtin.systemd:
+    name: docker.service
+    state: stopped
+  ignore_errors: true
+
+
+- name: "Delete Consul state directory"
+  ansible.builtin.file:
+    path: /opt/consul
+    state: absent
+
+- name: "Create Consul state directory"
+  ansible.builtin.file:
+    path: /opt/consul
+    state: directory
+    owner: consul
+    group: consul
+

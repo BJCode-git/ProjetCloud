@@ -1,0 +1,4 @@
+---
+consul_datacenter: "perle"
+consul_server_number: 3
+recursors: ["1.1.1.1", "1.0.0.1"]
