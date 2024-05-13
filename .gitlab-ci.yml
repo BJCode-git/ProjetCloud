@@ -1,0 +1,18 @@
+docker-build:
+  # Use the official docker image.
+  image: docker:cli
+  stage: build
+  services:
+    - docker:dind
+
+  before_script:
+    - docker login -u "jbunistra" -p "dckr_pat_6ozrng5x5m16k68os4kQkO17NqI" 
+  script:
+    - docker build . --tag cloud-back-end
+    - docker push cloud-back-end docker.io/jbunistra/cloud-back-end:latest
+  # Run this job in a branch where a Dockerfile exists
+  rules:
+    - if: $CI_COMMIT_BRANCH
+      exists:
+        - Dockerfile
+
