@@ -1,13 +1,18 @@
-docker-build:
-  image: docker:19.03
-  stage: build
+  image: docker:latest
+
   services:
-    - docker:19.03-dind
+    - docker:dind
+
+  variables:
+    DOCKER_DRIVER: overlay2
 
   before_script:
-    - echo "dckr_pat_6ozrng5x5m16k68os4kQkO17NqI" > docker login -u "jbunistra" --password-stdin 
-  script:
-    - docker build . --tag cloud-front-end
-    - docker push docker.io/jbunistra/cloud-front-end:latest
-  # Run this job in a branch where a Dockerfile exists
+    - echo "dckr_pat_6ozrng5x5m16k68os4kQkO17NqI" | docker login -u "jbunistra" --password-stdin
+
+  build:
+    stage: build
+    script:
+      - docker build -t cloud-front-end:latest .
+      - docker push  docker.io/jbunistra/cloud-front-end:latest
+
   
