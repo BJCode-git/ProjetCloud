@@ -1,0 +1,19 @@
+# vars file for roles/nomad
+
+is_server: true
+nomad_install_package: true
+
+hashicorp_nomad_packages:
+  - nomad
+
+hashicorp_nomad_pip_packages:
+  - python-nomad
+
+
+nomad_datacenter: "perle"
+nomad_server_number: 3
+interface_vxlan: "vxlan12"
+
+cloud_frontend_img: "docker.io/jbunistra/cloud-frontend:latest"
+cloud_backend_img: "docker.io/jbunistra/cloud-backend:latest"
+job_instance_loader: "perle"
