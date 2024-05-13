@@ -33,14 +33,14 @@
   run_once: true
   when:
     - nomad_server
-
-- name: List server members
-  ansible.builtin.command:
-    cmd: nomad server members
-  register: nomad_list_server_members
-  changed_when: false
-  when:
-    - nomad_server
+#
+#- name: List server members
+#  ansible.builtin.command:
+#    cmd: nomad server members
+#  register: nomad_list_server_members
+#  changed_when: false
+#  when:
+#    - nomad_server
 
 - name: Join nomad leader
   ansible.builtin.command:
