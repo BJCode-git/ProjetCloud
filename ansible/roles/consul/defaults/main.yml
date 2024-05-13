@@ -32,7 +32,6 @@ consul_bootstrap_expect: "{{consul_server_number}}"
 # Similar to -join but allows retrying a join until it is successful.
 consul_retry_join:
     - 172.16.12.100
-    - "{{ hostvars[inventory_hostname]['vxlan_interface_address'] }}"
 #   - consul.domain.internal
 
 # The address that should be bound to for internal cluster communications.
