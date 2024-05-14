@@ -5,11 +5,19 @@ on:
     branches: [ "front-end" ]
   pull_request:
     branches: [ "front-end" ]
+  workflow_dispatch:
+    inputs:
+      target-branch:
+        description: 'Target branch to build the Docker image for'
+        required: true
+        default: 'front-end'
+
 
 jobs:
 
   push_to_registry:
     name: Push Docker image to Docker Hub
+    if: github.event_name == 'push' && github.ref == 'refs/heads/front-end'
     runs-on: ubuntu-latest
     permissions:
       packages: write
